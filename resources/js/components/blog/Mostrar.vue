@@ -13,7 +13,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Titulo</th>
-                            <th>contenido</th>
+                            <th>Contenido</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -23,8 +23,8 @@
                             <td>{{ blog.titulo }}</td>
                             <td>{{ blog.contenido }}</td>
                             <td>
-                                <router-link :to='{name:"editarBlog", params:{id:blog.id}}' class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></router-link>
-                                <a type="button" @click="borrarblog(blog.id)" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                <router-link :to='  {name:"editarBlog", params:{id:blog.id}}' class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></router-link>
+                                <a type="button" @click="borrarBlog(blog.id)" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -53,17 +53,17 @@ export default {
             .then(response=>{
                 this.blogs = response.data
             })
-            .cath(error =>{
+            .catch(error =>{
                 this.blog = []
             })
         },
-        borrarblog(id){
+        borrarBlog(id){
             if (confirm("Confirma eliminar registro?")){
                 this.axios.delete(`/api/blog/${id}`)
                     .then(response=>{
                     this.mostrarBlogs()
                 })
-                .cath(error =>{
+                .catch(error =>{
                     console
                 })
             }

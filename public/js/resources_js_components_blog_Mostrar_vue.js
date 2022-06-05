@@ -79,7 +79,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.next = 2;
                 return _this.axios.get('/api/blog').then(function (response) {
                   _this.blogs = response.data;
-                }).cath(function (error) {
+                })["catch"](function (error) {
                   _this.blog = [];
                 });
 
@@ -91,13 +91,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    borrarblog: function borrarblog(id) {
+    borrarBlog: function borrarBlog(id) {
       var _this2 = this;
 
       if (confirm("Confirma eliminar registro?")) {
         this.axios["delete"]("/api/blog/".concat(id)).then(function (response) {
           _this2.mostrarBlogs();
-        }).cath(function (error) {
+        })["catch"](function (error) {
           console;
         });
       }
@@ -247,7 +247,7 @@ var render = function () {
                           attrs: { type: "button" },
                           on: {
                             click: function ($event) {
-                              return _vm.borrarblog(blog.id)
+                              return _vm.borrarBlog(blog.id)
                             },
                           },
                         },
@@ -277,7 +277,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Titulo")]),
         _vm._v(" "),
-        _c("th", [_vm._v("contenido")]),
+        _c("th", [_vm._v("Contenido")]),
         _vm._v(" "),
         _c("th", [_vm._v("Acciones")]),
       ]),
